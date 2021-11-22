@@ -42,7 +42,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ asset('assets/') }}/index2.html"><b>Kepegawaian</b>DINKES</a>
+            <a href="{{ asset('assets/') }}/index2.html"><b>Aplikasi Notifikasi</b>KGB</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">

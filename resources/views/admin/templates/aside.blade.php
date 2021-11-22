@@ -13,7 +13,7 @@
             <div class="pull-left info">
                 <p>{{ \Auth::user()->name }}</p>
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> {{ \Auth::user()->email }}</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> {{ \Auth::user()->username }}</a>
             </div>
         </div>
 
@@ -34,17 +34,18 @@
         <ul class="sidebar-menu" data-widget="tree">
             {{-- <li class="header">HEADER</li> --}}
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+            <li class="{{ (request()->is('dashboard')) ? 'active' : '' }}"><a href="{{ route('dashboard') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+            {{-- <li><a href="#"><i class="fa fa-users"></i> <span>Pegawai</span></a></li> --}}
+            <li class="treeview {{ (request()->is('master*')) ? 'active' : '' }}">
+                <a href="#"><i class="fa fa-list"></i> <span>Master</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                <ul class="treeview-menu menu-open">
+                    <li><a href="#"><i class="fa fa-users"></i> Pegawai</a></li>
+                    <li class="{{ (request()->is('master/jabatan*')) ? 'active' : '' }}"><a href="{{ route('jabatan') }}"><i class="fa fa-key"></i> Jabatan</a></li>
+                    <li class="{{ (request()->is('master/unit-kerja*')) ? 'active' : '' }}"><a href="{{ route('unit-kerja') }}"><i class="fa fa-building-o"></i> Unit Kerja</a></li>
                 </ul>
             </li>
         </ul>

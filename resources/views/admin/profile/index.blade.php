@@ -36,7 +36,7 @@
 
                             <h3 class="profile-username text-center">{{ \Auth::user()->name }}</h3>
 
-                            <p class="text-muted text-center">{{ \Auth::user()->email }}</p>
+                            <p class="text-muted text-center">{{ \Auth::user()->username }}</p>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -64,6 +64,19 @@
                                                 class="form-control" id="inputName" placeholder="Name">
                                         </div>
                                         @error('name')
+                                            <span class="text-danger">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" name="username" value="{{ \Auth::user()->username }}"
+                                                class="form-control" id="inputUsername" placeholder="Username">
+                                        </div>
+                                        @error('username')
                                             <span class="text-danger">
                                                 {{ $message }}
                                             </span>

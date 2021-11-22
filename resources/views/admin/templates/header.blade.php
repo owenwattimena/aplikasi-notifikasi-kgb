@@ -2,15 +2,15 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{ url('/') }}" target="_blank" class="logo" style="background-color: #1A2226">
+    <a href="{{ url('/') }}" target="_blank" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class=" logo-mini"><b>R</b>3</span>
+        <span class=" logo-mini"><b></b>KGB</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Ranting</b>3</span>
+        <span class="logo-lg"><strong>APP Notif</strong> KGB</span>
     </a>
 
     <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation" style="background-color: black">
+    <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
@@ -137,7 +137,7 @@
 
                             <p>
                                 {{ \Auth::user()->name }}
-                                <small>{{ \Auth::user()->email }}</small>
+                                <small>{{ \Auth::user()->username }}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->

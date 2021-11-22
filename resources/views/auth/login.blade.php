@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
+    <title>Kepegawaian Dinas Kesehatan Kota Ambon | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -42,7 +42,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ asset('assets/') }}/index2.html"><b>Ranting</b>3</a>
+            <a href="{{ asset('assets/') }}/index2.html"><b>Kepegawaian</b>DINKES</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
@@ -57,9 +57,9 @@
             <form action="{{ route('login.login') }}" method="post">
                 @csrf
                 <div class="form-group has-feedback">
-                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                    <input type="text" class="form-control" name="username" placeholder="Username" required>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    @error('email')
+                    @error('username')
                         <span class="text-danger">
                             {{ $message }}
                         </span>
@@ -96,8 +96,8 @@
             </div> --}}
             <!-- /.social-auth-links -->
 
-            <a href="{{ route('forgot-password') }}">I forgot my password</a><br>
-            <a href="register.html" class="text-center">Register a new membership</a>
+            {{-- <a href="{{ route('forgot-password') }}">I forgot my password</a><br> --}}
+            {{-- <a href="register.html" class="text-center">Register a new membership</a> --}}
 
         </div>
         <!-- /.login-box-body -->

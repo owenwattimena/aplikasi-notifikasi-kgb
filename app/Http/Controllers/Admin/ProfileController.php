@@ -32,6 +32,7 @@ class ProfileController extends Controller
         ]);
         $user = User::findOrFail(\Auth::user()->id);
         $user->name = $request->name;
+        $user->username = $request->username;
         if($user->save()) return redirect()->back()->with(AlertFormatter::success("Profile updated"));
         return redirect()->back()->with(AlertFormatter::danger("Profile failed to update"));
     }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pegawai;
 use App\Models\Jabatan;
-use App\Models\Unitkerja;
+use App\Models\UnitKerja;
 use App\Models\Golruang;
 
 
@@ -21,7 +21,7 @@ class PegawaiController extends Controller
     public function create()
     {
         $data['jabatan'] = Jabatan::all();
-        $data['unit_kerja'] = Unitkerja::all();
+        $data['unit_kerja'] = UnitKerja::all();
         $data['gol_ruang'] = Golruang::all();
         return view('admin.pegawai.form',$data);
     }

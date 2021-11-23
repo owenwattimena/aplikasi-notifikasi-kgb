@@ -12,11 +12,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Jabatan
+            Gol. Ruang
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><i class="fa fa-key"></i> Jabatan</li>
+            <li class="active"><i class="fa fa-angle-double-up"></i> Gol. Ruang</li>
         </ol>
     </section>
     
@@ -46,7 +46,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="text-right" style="margin-bottom: 10px">
-                                <a href="{{ route('jabatan.create') }}" class="btn btn-social bg-blue btn-flat">
+                                <a href="{{ route('gol-ruang.create') }}" class="btn btn-social bg-blue btn-flat">
                                     <i class="fa fa-plus"></i> TAMBAH
                                 </a>
                             </div>
@@ -54,24 +54,24 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>JABATAN</th>
+                                        <th>GOL. RUANG</th>
                                         <th>AKSI</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($jabatan as $key => $item)
+                                    @foreach ($gol_ruang as $key => $item)
                                     <tr>
                                         <td>{{ ++$key }}</td>
-                                        <td>{{ $item->jabatan }}</td>
+                                        <td>{{ $item->gol_ruang }}</td>
                                         <td>
-                                            <a href="{{ route('jabatan.edit', $item->id) }}" class="btn btn-social bg-yellow btn-flat btn-sm">
+                                            <a href="{{ route('gol-ruang.edit', $item->id) }}" class="btn btn-social bg-yellow btn-flat btn-sm">
                                                 <i class="fa fa-edit"></i> UBAH
                                             </a>
-                                            <form action="{{ route('jabatan.destroy', $item->id) }}" style="display: inline" method="POST">
+                                            <form action="{{ route('gol-ruang.destroy', $item->id) }}" style="display: inline" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <input type="hidden" name="id" value="id">
-                                                <button type="submit" onclick="return confirm('Yakin ingin menghapus unit kerja?')" class="btn btn-social bg-red btn-flat btn-sm">
+                                                <button type="submit" onclick="return confirm('Yakin ingin menghapus Gol. Ruang?')" class="btn btn-social bg-red btn-flat btn-sm">
                                                     <i class="fa fa-trash"></i> HAPUS
                                                 </button>
                                             </form>
@@ -81,8 +81,8 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>#</th>
-                                        <th>JABATAN</th>
+                                        <th>#</th>                                        
+                                        <th>GOL. RUANG</th>
                                         <th>AKSI</th>
                                     </tr>
                                 </tfoot>

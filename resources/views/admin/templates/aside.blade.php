@@ -43,7 +43,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu menu-open">
-                    <li><a href="#"><i class="fa fa-users"></i> Pegawai</a></li>
+                    <li class="{{ (request()->is('master/pegawai*')) ? 'active' : '' }}"><a href="{{ route('pegawai') }}"><i class="fa fa-users"></i> Pegawai</a></li>
+                    <li class="{{ (request()->is('master/gol-ruang*')) ? 'active' : '' }}"><a href="{{ route('gol-ruang') }}"><i class="fa fa-angle-double-up"></i> Gol. Ruang</a></li>
                     <li class="{{ (request()->is('master/jabatan*')) ? 'active' : '' }}"><a href="{{ route('jabatan') }}"><i class="fa fa-key"></i> Jabatan</a></li>
                     <li class="{{ (request()->is('master/unit-kerja*')) ? 'active' : '' }}"><a href="{{ route('unit-kerja') }}"><i class="fa fa-building-o"></i> Unit Kerja</a></li>
                 </ul>

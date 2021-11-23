@@ -54,8 +54,8 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Unit Keja</th>
-                                        <th>Aksi</th>
+                                        <th>UNIT KERJA</th>
+                                        <th>AKSI</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -82,8 +82,8 @@
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Unit Kerja</th>
-                                        <th>Aksi</th>
+                                        <th>UNIT KERJA</th>
+                                        <th>AKSI</th>
                                     </tr>
                                 </tfoot>
                             </table>

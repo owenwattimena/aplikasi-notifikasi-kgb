@@ -68,7 +68,7 @@ class JabatanController extends Controller
     {
         if(Jabatan::destroy($id))
         {
-            return redirect()->route('jabatan')->with(AlertFormatter::success("Unit kerjaJabatan berhasil di hapus."));
+            return redirect()->route('jabatan')->with(AlertFormatter::success("Jabatan berhasil di hapus."));
         }
         return redirect()->route('jabatan')->with(AlertFormatter::danger("Jabatan gagal di hapus."));
     }

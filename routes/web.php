@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UnitKerjaController;
+use App\Http\Controllers\Admin\PegawaiController;
+use App\Http\Controllers\Admin\GolruangController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
 /*
@@ -53,6 +55,19 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/dashboard/profile/change-password', [ProfileController::class, 'changePassword'])->name('dashboard.profile.password');
     
     Route::prefix('master')->group(function () {
+
+        Route::prefix('pegawai')->group(function () {
+            Route::get('/', [PegawaiController::class, 'index'])->name('pegawai');
+            Route::get('tambah', [PegawaiController::class, 'create'])->name('pegawai.create');
+        });
+        Route::prefix('gol-ruang')->group(function () {
+            Route::get('/', [GolruangController::class, 'index'])->name('gol-ruang');
+            Route::get('tambah', [GolruangController::class, 'create'])->name('gol-ruang.create');
+            Route::get('ubah/{id}', [GolruangController::class, 'edit'])->name('gol-ruang.edit');
+            Route::post('save', [GolruangController::class, 'save'])->name('gol-ruang.save');
+            Route::delete('delete/{id}', [GolruangController::class, 'destroy'])->name('gol-ruang.destroy');
+        });
+
         Route::prefix('unit-kerja')->group(function () {
             Route::get('/', [UnitKerjaController::class, 'index'])->name('unit-kerja');
             Route::get('tambah', [UnitKerjaController::class, 'create'])->name('unit-kerja.create');

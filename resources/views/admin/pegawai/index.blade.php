@@ -39,71 +39,74 @@
                                     <i class="fa fa-plus"></i> TAMBAH
                                 </a>
                             </div>
-                            <table id="table" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>NAMA</th>
-                                        <th>NIP</th>
-                                        <th>GOL. RUANG</th>
-                                        <th>SK TERAKHIR</th>
-                                        <th>TMT</th>
-                                        <th>JABATAN SEKARANG</th>
-                                        <th>TMT BERKALA AKAN DATANG</th>
-                                        <th>UNIT KERJA</th>
-                                        <th>AKSI</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($pegawai as $key => $item)
-                                    <tr>
-                                        <td>{{ ++$key }}</td>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->nip }}</td>
-                                        <td>{{ $item->gol_ruang->gol_ruang }}</td>
-                                        <td>{{ $item->sk_terakhir }}</td>
-                                        <td>{{ $item->tmt }}</td>
-                                        <td>{{ $item->jabatan->jabatan }}</td>
-                                        <td>
-                                            @php
-                                                $masaTmt = masaBerakhirTMT($item->tmt_berkala_akan_datang);
-                                            @endphp
-                                            <span class="badge bg-{{ $masaTmt <= 0 ? 'red' : ($masaTmt <= 100 ? 'yellow' : 'green') }}">
-                                                {{ $item->tmt_berkala_akan_datang }}
-                                            </span>
-                                        </td>
-                                        <td>{{ $item->unit_kerja->unit_kerja }}</td>
-                                        <td>
-                                            <a href="{{ route('pegawai.edit', $item->id) }}" class="btn btn-social bg-yellow btn-flat btn-sm">
-                                                <i class="fa fa-edit"></i> UBAH
-                                            </a>
-                                            <form action="{{ route('jabatan.destroy', $item->id) }}" style="display: inline" method="POST">
-                                                @csrf
-                                                @method('delete')
-                                                <input type="hidden" name="id" value="id">
-                                                <button type="submit" onclick="return confirm('Yakin ingin menghapus unit kerja?')" class="btn btn-social bg-red btn-flat btn-sm">
-                                                    <i class="fa fa-trash"></i> HAPUS
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>NAMA</th>
-                                        <th>NIP</th>
-                                        <th>GOL. RUANG</th>
-                                        <th>SK TERAKHIR</th>
-                                        <th>TMT</th>
-                                        <th>JABATAN SEKARANG</th>
-                                        <th>TMT BERKALA AKAN DATANG</th>
-                                        <th>UNIT KERJA</th>
-                                        <th>AKSI</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                            <div class="table-responsive">
+
+                                <table id="table" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>NAMA</th>
+                                            <th>NIP</th>
+                                            <th>GOL. RUANG</th>
+                                            <th>SK TERAKHIR</th>
+                                            <th>TMT</th>
+                                            <th>JABATAN SEKARANG</th>
+                                            <th>TMT BERKALA AKAN DATANG</th>
+                                            <th>UNIT KERJA</th>
+                                            <th>AKSI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($pegawai as $key => $item)
+                                        <tr>
+                                            <td>{{ ++$key }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->nip }}</td>
+                                            <td>{{ $item->gol_ruang->gol_ruang }}</td>
+                                            <td>{{ $item->sk_terakhir }}</td>
+                                            <td>{{ $item->tmt }}</td>
+                                            <td>{{ $item->jabatan->jabatan }}</td>
+                                            <td>
+                                                @php
+                                                    $masaTmt = masaBerakhirTMT($item->tmt_berkala_akan_datang);
+                                                @endphp
+                                                <span class="badge bg-{{ $masaTmt <= 0 ? 'red' : ($masaTmt <= 100 ? 'yellow' : 'green') }}">
+                                                    {{ $item->tmt_berkala_akan_datang }}
+                                                </span>
+                                            </td>
+                                            <td>{{ $item->unit_kerja->unit_kerja }}</td>
+                                            <td>
+                                                <a href="{{ route('pegawai.edit', $item->id) }}" class="btn btn-social bg-yellow btn-flat btn-sm">
+                                                    <i class="fa fa-edit"></i> UBAH
+                                                </a>
+                                                <form action="{{ route('jabatan.destroy', $item->id) }}" style="display: inline" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <input type="hidden" name="id" value="id">
+                                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus unit kerja?')" class="btn btn-social bg-red btn-flat btn-sm">
+                                                        <i class="fa fa-trash"></i> HAPUS
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>NAMA</th>
+                                            <th>NIP</th>
+                                            <th>GOL. RUANG</th>
+                                            <th>SK TERAKHIR</th>
+                                            <th>TMT</th>
+                                            <th>JABATAN SEKARANG</th>
+                                            <th>TMT BERKALA AKAN DATANG</th>
+                                            <th>UNIT KERJA</th>
+                                            <th>AKSI</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                         <!-- /.box-body -->
                     </div>

@@ -60,8 +60,8 @@
                                         <td>{{ ++$key }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->nip }}</td>
-                                        <td>{{ $item->sk_terakhir }}</td>
                                         <td>{{ $item->gol_ruang->gol_ruang }}</td>
+                                        <td>{{ $item->sk_terakhir }}</td>
                                         <td>{{ $item->tmt }}</td>
                                         <td>{{ $item->jabatan->jabatan }}</td>
                                         <td>

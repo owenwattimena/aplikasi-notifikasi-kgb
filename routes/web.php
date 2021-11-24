@@ -59,6 +59,8 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('pegawai')->group(function () {
             Route::get('/', [PegawaiController::class, 'index'])->name('pegawai');
             Route::get('tambah', [PegawaiController::class, 'create'])->name('pegawai.create');
+            Route::get('ubah/{id}', [PegawaiController::class, 'edit'])->name('pegawai.edit');
+            Route::post('save', [PegawaiController::class, 'save'])->name('pegawai.save');
         });
         Route::prefix('gol-ruang')->group(function () {
             Route::get('/', [GolruangController::class, 'index'])->name('gol-ruang');

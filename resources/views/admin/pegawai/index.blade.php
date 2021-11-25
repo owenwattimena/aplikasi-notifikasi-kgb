@@ -70,22 +70,21 @@
                                                 @php
                                                     $masaTmt = masaBerakhirTMT($item->tmt_berkala_akan_datang);
                                                 @endphp
-                                                <span class="badge bg-{{ $masaTmt <= 0 ? 'red' : ($masaTmt <= 100 ? 'yellow' : 'green') }}">
+                                                <span class="badge bg-{{ $masaTmt <= 0 ? 'red' : ($masaTmt <= 100 && $masaTmt > 0 ? 'yellow' : 'green') }}">
                                                     {{ $item->tmt_berkala_akan_datang }}
                                                 </span>
                                             </td>
                                             <td>{{ $item->unit_kerja->unit_kerja }}</td>
                                             <td>
-                                                <a href="{{ route('pegawai.edit', $item->id) }}" class="btn btn-social bg-yellow btn-flat btn-sm">
-                                                    <i class="fa fa-edit"></i> UBAH
+                                                <a href="{{ route('pegawai.edit', $item->id) }}" class="btn bg-yellow btn-flat btn-sm">
+                                                    <i class="fa fa-edit"></i> 
                                                 </a>
-                                                <form action="{{ route('jabatan.destroy', $item->id) }}" style="display: inline" method="POST">
+                                                <form action="{{ route('pegawai.destroy', $item->id) }}" style="display: inline-block" method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <input type="hidden" name="id" value="id">
-                                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus unit kerja?')" class="btn btn-social bg-red btn-flat btn-sm">
-                                                        <i class="fa fa-trash"></i> HAPUS
-                                                    </button>
+                                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus unit kerja?')" class="btn bg-red btn-flat btn-sm">
+                                                        <i class="fa fa-trash"></i> 
                                                 </form>
                                             </td>
                                         </tr>

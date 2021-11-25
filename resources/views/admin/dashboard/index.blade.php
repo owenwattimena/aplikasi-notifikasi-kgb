@@ -29,12 +29,26 @@
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{{ $total_pegawai }}</h3>
                             
                             <p>Total Pegawai</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-android-people"></i>
+                        </div>
+                        <a href="{{ route('pegawai') }}" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-orange">
+                        <div class="inner">
+                            <h3>{{ $tmt_akan_berakhir }}</h3>
+                            
+                            <p>TMT Berkala Akan Berakhir</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-time"></i>
                         </div>
                         <a href="#" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -43,9 +57,9 @@
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{{ $tmt_berakhir }}</h3>
                             
-                            <p>TMT Berkala Akan Berakhir</p>
+                            <p>TMT Berkala Telah Berakhir</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-close"></i>

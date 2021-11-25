@@ -48,32 +48,39 @@ class PegawaiController extends Controller
 
     private function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'nip' => 'required',
-            'id_gol_ruang' => 'required',
-            'sk_terakhir' => 'required',
-            'tmt' => 'required',
-            'id_jabatan' => 'required',
-            'tmt_berkala_akan_datang' => 'required',
-            'id_unit_kerja' => 'required',
-        ]);
+        try {
+            $request->validate([
+                'nama' => 'required',
+                'nip' => 'required',
+                'id_gol_ruang' => 'required',
+                'sk_terakhir' => 'required',
+                'tmt' => 'required',
+                'id_jabatan' => 'required',
+                'tmt_berkala_akan_datang' => 'required',
+                'id_unit_kerja' => 'required',
+            ]);
 
-        $pegawai                            = new Pegawai;
-        $pegawai->nama                      = $request->nama;
-        $pegawai->nip                       = $request->nip;
-        $pegawai->id_gol_ruang              = $request->id_gol_ruang;
-        $pegawai->sk_terakhir               = $request->sk_terakhir;
-        $pegawai->tmt                       = $request->tmt;
-        $pegawai->id_jabatan                = $request->id_jabatan;
-        $pegawai->tmt_berkala_akan_datang   = $request->tmt_berkala_akan_datang;
-        $pegawai->id_unit_kerja             = $request->id_unit_kerja;
+            $pegawai                            = new Pegawai;
+            $pegawai->nama                      = $request->nama;
+            $pegawai->nip                       = $request->nip;
+            $pegawai->id_gol_ruang              = $request->id_gol_ruang;
+            $pegawai->sk_terakhir               = $request->sk_terakhir;
+            $pegawai->tmt                       = $request->tmt;
+            $pegawai->id_jabatan                = $request->id_jabatan;
+            $pegawai->tmt_berkala_akan_datang   = $request->tmt_berkala_akan_datang;
+            $pegawai->id_unit_kerja             = $request->id_unit_kerja;
 
-        if($pegawai->save())
-        {
-            return redirect()->route('pegawai')->with(AlertFormatter::success("Pegawai berhasil di tambahkan."));
+            if($pegawai->save())
+            {
+                return redirect()->route('pegawai')->with(AlertFormatter::success("Pegawai berhasil di tambahkan."));
+            }
+            return redirect()->back()->with(AlertFormatter::danger("Pegawai gagal di tambahkan."))->withInput();
+        } catch(\Illuminate\Database\QueryException $e){
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == '1062'){
+                return redirect()->back()->with(AlertFormatter::danger("Gagal menambahkan. Pegawai dengan NIP " . $request->nip . " telah terdaftar."))->withInput();
+            }
         }
-        return redirect()->back()->with(AlertFormatter::danger("Pegawai gagal di tambahkan."));
     }
 
     private function update(Request $request)
@@ -104,5 +111,14 @@ class PegawaiController extends Controller
             return redirect()->route('pegawai')->with(AlertFormatter::success("Pegawai berhasil di ubah."));
         }
         return redirect()->route('pegawai.edit', $request->id)->with(AlertFormatter::danger("Pegawai gagal di ubah."));
+    }
+
+    public function destroy($id)
+    {
+        if(Pegawai::destroy($id))
+        {
+            return redirect()->back()->with(AlertFormatter::success("Pegawai berhasil di hapus."));
+        }
+        return redirect()->back()->with(AlertFormatter::danger("Pegawai gagal di hapus."));
     }
 }

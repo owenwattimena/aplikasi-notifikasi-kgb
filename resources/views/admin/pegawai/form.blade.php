@@ -60,14 +60,14 @@
                                     <label for="inputNama" class="col-sm-2 control-label">Nama Lengkap</label>
                                     
                                     <div class="col-sm-10">
-                                        <input type="text" name="nama" required value="{{ isset($data) ? $data->nama : '' }}" class="form-control" id="inputNama" placeholder="[Nama Lengkap]">
+                                        <input type="text" name="nama" required value="{{  isset($data) ? $data->nama : old('nama') }}" class="form-control" id="inputNama" placeholder="[Nama Lengkap]">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputNIP" class="col-sm-2 control-label">NIP</label>
                                     
                                     <div class="col-sm-10">
-                                        <input type="text" name="nip" required value="{{ isset($data) ? $data->nip : '' }}" class="form-control" id="inputNIP" placeholder="[Nomor Induk Pegawai]">
+                                        <input type="text" name="nip" required value="{{ isset($data) ? $data->nip : old('nip') }}" class="form-control" id="inputNIP" placeholder="[Nomor Induk Pegawai]">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -76,7 +76,7 @@
                                         <select name="id_gol_ruang" required class="form-control gol-ruang js-states" style="width: 100%;" id="inputGolRuang">
                                             <option></option>
                                             @foreach ($gol_ruang as $item)
-                                                <option value="{{$item->id}}" {{ isset($data) ? $data->id_gol_ruang == $item->id ? 'selected' : '' : '' }}>{{$item->gol_ruang}}</option>
+                                                <option value="{{$item->id}}" {{ isset($data) ? ($data->id_gol_ruang == $item->id ? 'selected' : '') : (old('id_gol_ruang') == $item->id ? 'selected' : '') }}>{{$item->gol_ruang}}</option>
                                             @endforeach
                                         </select>
                                         {{-- <input type="text" name="jabatan" value="{{ isset($data) ? $data->jabatan : '' }}" class="form-control" id="inputJabatan" placeholder="[Jabatan Sekarang]"> --}}
@@ -86,14 +86,14 @@
                                     <label for="inputSkTerakhir" class="col-sm-2 control-label">SK Terakhir</label>
                                     
                                     <div class="col-sm-10">
-                                        <input type="text" name="sk_terakhir" required value="{{ isset($data) ? $data->sk_terakhir : '' }}" class="form-control" id="inputSkTerakhir" placeholder="[SK Terakhir]">
+                                        <input type="text" name="sk_terakhir" required value="{{ isset($data) ? $data->sk_terakhir : old('sk_terakhir') }}" class="form-control" id="inputSkTerakhir" placeholder="[SK Terakhir]">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputTMT" class="col-sm-2 control-label">Nomor/Tanggal/TMT</label>
                                     
                                     <div class="col-sm-10">
-                                        <input type="text" name="tmt" required value="{{ isset($data) ? $data->tmt : '' }}" class="form-control" id="inputTMT" placeholder="[Nomor/Tanggal/TMT]">
+                                        <input type="text" name="tmt" required value="{{ isset($data) ? $data->tmt : old('tmt') }}" class="form-control" id="inputTMT" placeholder="[Nomor/Tanggal/TMT]">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -103,7 +103,7 @@
                                         <select name="id_jabatan" required class="form-control jabatan js-states" style="width: 100%;" id="inputJabatan">
                                             <option></option>
                                             @foreach ($jabatan as $item)
-                                                <option value="{{$item->id}}" {{ isset($data) ? $data->id_jabatan == $item->id ? 'selected' : '' : '' }}>{{$item->jabatan}}</option>
+                                                <option value="{{$item->id}}" {{ isset($data) ? ($data->id_jabatan == $item->id ? 'selected' : '') : (old('id_jabatan') == $item->id ? 'selected' : '') }}>{{$item->jabatan}}</option>
                                             @endforeach
                                         </select>
                                         {{-- <input type="text" name="jabatan" value="{{ isset($data) ? $data->jabatan : '' }}" class="form-control" id="inputJabatan" placeholder="[Jabatan Sekarang]"> --}}
@@ -113,7 +113,7 @@
                                     <label for="inputTmtAkanDatang" class="col-sm-2 control-label">TMT Berkala Akan Datang</label>
                                     
                                     <div class="col-sm-10">
-                                        <input type="date" name="tmt_berkala_akan_datang" required value="{{ isset($data) ? $data->tmt_berkala_akan_datang : '' }}" class="form-control" id="inputTmtAkanDatang" placeholder="[Nomor/Tanggal/TMT]">
+                                        <input type="date" name="tmt_berkala_akan_datang" required value="{{ isset($data) ? $data->tmt_berkala_akan_datang : old('tmt_berkala_akan_datang') }}" class="form-control" id="inputTmtAkanDatang" placeholder="[Nomor/Tanggal/TMT]">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -122,7 +122,7 @@
                                         <select name="id_unit_kerja" required class="form-control unit-kerja js-states" style="width: 100%;" id="inputUnitKerja">
                                             <option></option>
                                             @foreach ($unit_kerja as $item)
-                                                <option value="{{$item->id}}" {{ isset($data) ? $data->id_unit_kerja == $item->id ? 'selected' : '' : '' }}>{{$item->unit_kerja}}</option>
+                                                <option value="{{$item->id}}" {{ isset($data) ? ($data->id_unit_kerja == $item->id ? 'selected' : '') : (old('id_unit_kerja') == $item->id ? 'selected' : '') }}>{{$item->unit_kerja}}</option>
                                             @endforeach
                                         </select>
                                     </div>

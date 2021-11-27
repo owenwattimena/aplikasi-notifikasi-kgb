@@ -64,7 +64,7 @@
                         <div class="icon">
                             <i class="ion ion-close"></i>
                         </div>
-                        <a href="{{ route('pegawai') }}?tmt_berkala=berakhir" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('pegawai') }}?tmt_berkala=telah_berakhir" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

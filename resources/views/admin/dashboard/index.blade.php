@@ -45,12 +45,12 @@
                         <div class="inner">
                             <h3>{{ $tmt_akan_berakhir }}</h3>
                             
-                            <p>TMT Berkala Akan Berakhir</p>
+                            <p>TMT Berkala Hampir Berakhir</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-ios-time"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('pegawai') }}?tmt_berkala=hampir_berakhir" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-xs-6">
@@ -64,7 +64,7 @@
                         <div class="icon">
                             <i class="ion ion-close"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('pegawai') }}?tmt_berkala=berakhir" class="small-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

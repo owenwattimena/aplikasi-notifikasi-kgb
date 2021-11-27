@@ -15,9 +15,15 @@ use App\Http\Controllers\Controller;
 
 class PegawaiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data['pegawai'] = Pegawai::all();
+        $pegawai = Pegawai::all();
+        $data['gol_ruang'] = Golruang::all();
+        $data['jabatan'] = Jabatan::all();
+        $data['unit_kerja'] = UnitKerja::all();
+        $dataPegawai = $this->dataPegawai($pegawai, $request);
+        $data['pegawai'] = $dataPegawai['pegawai'];
+        $data['export_pdf_params'] = $dataPegawai['export_pdf_params'];
         return view('admin.pegawai.index', $data);
     }
 
@@ -120,5 +126,73 @@ class PegawaiController extends Controller
             return redirect()->back()->with(AlertFormatter::success("Pegawai berhasil di hapus."));
         }
         return redirect()->back()->with(AlertFormatter::danger("Pegawai gagal di hapus."));
+    }
+
+    public function export(Request $request)
+    {
+        $pegawai = Pegawai::all();
+        $dataPegawai = $this->dataPegawai($pegawai, $request);
+        $data['data_pegawai'] = $dataPegawai;
+        $data['keadaan'] = strtoupper(date('F Y'));
+        return view('admin.pegawai.export_pdf',$data);
+    }
+
+    private function dataPegawai($pegawai, Request $request)
+    {
+        $data = array();
+        $pdf_export_params = '?';
+        if ($request->has('gol_ruang') && !$request->isNotFilled('gol_ruang')) {
+            $gol_ruang = $request->input('gol_ruang');
+            $pdf_export_params .= 'gol_ruang='.$gol_ruang . '&';
+            $pegawai = collect($pegawai)->filter(function($value,$key) use ($gol_ruang){
+                return $value->id_gol_ruang == $gol_ruang;
+            });
+            $gol_ruang = Golruang::findOrFail($gol_ruang);
+            $data['gol_ruang'] = $gol_ruang->gol_ruang;
+        }
+        
+        if ($request->has('jabatan') && !$request->isNotFilled('jabatan')) {
+            $jabatan = $request->input('jabatan');
+            $pdf_export_params .= 'jabatan='.$jabatan . '&';
+            $pegawai = collect($pegawai)->filter(function($value,$key) use ($jabatan){
+                return $value->id_jabatan == $jabatan;
+            });
+            $jabatan = Jabatan::findOrFail($jabatan);
+            $data['jabatan'] = $jabatan->jabatan;
+        }
+        
+        if ($request->has('unit_kerja') && !$request->isNotFilled('unit_kerja')) {
+            $unit_kerja = $request->input('unit_kerja');
+            $pdf_export_params .= 'unit_kerja='.$unit_kerja . '&';
+            $pegawai = collect($pegawai)->filter(function($value,$key) use ($unit_kerja){
+                return $value->id_unit_kerja == $unit_kerja;
+            });
+            $unit_kerja = UnitKerja::findOrFail($unit_kerja);
+            $data['unit_kerja'] = $unit_kerja->unit_kerja;
+        }
+
+        if($request->has('tmt_berkala') && !$request->isNotFilled('tmt_berkala')){
+            $tmt_berkala = $request->input('tmt_berkala');
+            $data['tmt_berkala'] = $tmt_berkala;
+            $pdf_export_params .= 'tmt_berkala='.$tmt_berkala;
+            if($tmt_berkala == 'hampir_berakhir')
+            {
+                $pegawai = collect($pegawai)->filter(function($value,$key){
+                    $masaTmt = masaBerakhirTMT($value->tmt_berkala_akan_datang);
+                    return $masaTmt <= 100 && $masaTmt > 0;
+                });
+            }
+            else if($tmt_berkala == 'telah_berakhir'){
+                $pegawai = collect($pegawai)->filter(function($value,$key){
+                    $masaTmt = masaBerakhirTMT($value->tmt_berkala_akan_datang);
+                    return $masaTmt <= 0;
+                });
+            }else{
+                $pegawai = $pegawai;
+            }
+        }
+        $data['pegawai'] = $pegawai;
+        $data['export_pdf_params'] = $pdf_export_params;
+        return $data;
     }
 }

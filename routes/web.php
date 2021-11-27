@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UnitKerjaController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\GolruangController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Models\Pegawai;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('ubah/{id}', [PegawaiController::class, 'edit'])->name('pegawai.edit');
             Route::post('save', [PegawaiController::class, 'save'])->name('pegawai.save');
             Route::delete('delete/{id}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy');
+            Route::get('export', [PegawaiController::class, 'export'])->name('pegawai.export');
         });
         Route::prefix('gol-ruang')->group(function () {
             Route::get('/', [GolruangController::class, 'index'])->name('gol-ruang');

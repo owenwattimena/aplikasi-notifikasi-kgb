@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DATA BEZETTING PEGAWAI NEGERI SIPIL</title>
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <title>DATA BEZETTING PEGAWAI NEGERI SIPIL - {{ $keadaan }}</title>
+    {{-- <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}"> --}}
     
     <style>
+        table{
+            font-size: 11px;
+        }
         table, td, th{
             border : 1px solid black;
             border-collapse: collapse;
@@ -15,9 +18,15 @@
         table td, table th{
             padding: 5px;
         }
-        .center {
-            margin-left: auto;
-            margin-right: auto;
+        .text-center {
+            text-align: center;
+        }
+        h1{
+            font-size: 14px;
+            line-height: 15px;
+        }
+        p{
+            font-size: 12px;
         }
     </style>
 </head>

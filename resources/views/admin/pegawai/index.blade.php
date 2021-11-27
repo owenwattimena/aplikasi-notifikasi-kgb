@@ -51,9 +51,9 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div style="margin-bottom: 10px;">
-                                {{-- <a id="btn-export-pdf" target="_blank" href="{{ route('pegawai.export') . $export_pdf_params }}" class="btn btn-social bg-red btn-flat">
+                                <a id="btn-export-pdf" target="_blank" href="{{ route('pegawai.export') . $export_pdf_params }}" class="btn btn-social bg-red btn-flat">
                                     <i class="fa fa-file-pdf-o"></i> Export PDF
-                                </a> --}}
+                                </a>
                                 <a href="{{ route('pegawai.create') }}" class="pull-right btn btn-social bg-blue btn-flat">
                                     <i class="fa fa-plus"></i> TAMBAH
                                 </a>

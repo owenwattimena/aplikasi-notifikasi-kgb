@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use DateTime;
 use App\Models\Jabatan;
 use App\Models\Pegawai;
 use App\Models\Golruang;
 use App\Models\UnitKerja;
 use Illuminate\Http\Request;
 use App\Helpers\AlertFormatter;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Controllers\Controller;
 
 
@@ -134,7 +134,11 @@ class PegawaiController extends Controller
         $dataPegawai = $this->dataPegawai($pegawai, $request);
         $data['data_pegawai'] = $dataPegawai;
         $data['keadaan'] = strtoupper(date('F Y'));
-        return view('admin.pegawai.export_pdf',$data);
+        // return view('admin.pegawai.export_pdf', $data);
+        $pdf = PDF::loadView('admin.pegawai.export_pdf', $data);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->stream('DATA BEZETTING PEGAWAI NEGERI SIPIL-' . strtoupper(date('F-Y')) . '.pdf',  array("Attachment" => false));
+        // return $pdf->download('DATA BEZETTING PEGAWAI NEGERI SIPIL-' . strtoupper(date('F-Y')) . '.pdf');
     }
 
     private function dataPegawai($pegawai, Request $request)

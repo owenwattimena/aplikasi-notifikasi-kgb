@@ -57,7 +57,7 @@
                 <!-- /.messages-menu -->
 
                 <!-- Notifications Menu -->
-                <li class="dropdown notifications-menu">
+                {{-- <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
@@ -79,7 +79,7 @@
                         </li>
                         <li class="footer"><a href="#">View all</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <!-- Tasks Menu -->
                 {{-- <li class="dropdown tasks-menu">
                     <!-- Menu Toggle Button -->
